@@ -1,0 +1,31 @@
+name: brew test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Tap this checkout
+        run: brew tap pavel-gorlov/tap "$GITHUB_WORKSPACE"
+
+      - name: Install from source
+        run: brew install --build-from-source pavel-gorlov/tap/ai-dotfiles
+
+      - name: Test formula
+        run: brew test pavel-gorlov/tap/ai-dotfiles
+
+      - name: Audit formula
+        run: brew audit --strict pavel-gorlov/tap/ai-dotfiles
+
+      - name: Smoke run
+        run: ai-dotfiles --version
