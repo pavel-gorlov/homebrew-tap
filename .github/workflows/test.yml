@@ -19,6 +19,12 @@ jobs:
         if: runner.os == 'Linux'
         run: echo "/home/linuxbrew/.linuxbrew/bin" >> "$GITHUB_PATH"
 
+      # Runners ship with HOMEBREW_NO_AUTO_UPDATE=1 and a preinstalled Homebrew
+      # that goes stale. Core formulae (ca-certificates) then use install-step
+      # syntax the bundled Homebrew cannot parse: "unknown install step: run".
+      - name: Update Homebrew
+        run: brew update
+
       - name: Tap this checkout
         run: brew tap pavel-gorlov/tap "$GITHUB_WORKSPACE"
 
