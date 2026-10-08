@@ -3,8 +3,8 @@ class AiDotfiles < Formula
 
   desc "Package manager for Claude Code configuration"
   homepage "https://github.com/pavel-gorlov/ai-dotfiles"
-  url "https://github.com/pavel-gorlov/ai-dotfiles/archive/refs/tags/v0.4.3.tar.gz"
-  sha256 "c05cb9340abf7e595aba71d8eef580782dd57bc5ff83118e8a6d50a3e18fd0d6"
+  url "https://github.com/pavel-gorlov/ai-dotfiles/archive/refs/tags/v0.4.4.tar.gz"
+  sha256 "a5b83fce46d152ebeab36adb6ab20d2301d5f11ee402f35a35899aaec0146ca6"
   license "MIT"
 
   depends_on "python@3.14"
